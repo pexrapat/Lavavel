@@ -5,6 +5,26 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
+
+Route::get('/user', [UserController::class, 'index']);
+
+
+Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products/{id}', [ProductController::class, 'show']);
+
+
+// Route::get('/user/{id}', function (string $id) {
+//     return 'User '.$id;
+// });
+
+Route::get('/users/{user}', [UserController::class, 'show']);
+
+
+Route::get('/greeting', function () {
+    return 'Hello World';
+});
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
